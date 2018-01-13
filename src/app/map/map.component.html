@@ -1,0 +1,74 @@
+<br>
+<div class="row">
+
+  <div class="col-md-3">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Available Fileds
+            <br>
+            <em class="text-muted">Drag to choose.</em>
+          </th>
+          <th></th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr *ngFor="let field of aFields; let i = index">
+        <td 
+          class="cell-source"
+          (dragstart)="drag($event,i)" 
+          draggable="true" 
+          [ngClass]="{'not-mapped':!field.mapped}">
+           {{field.name}} 
+        </td>
+        <td class="text-right" [ngClass]="{'not-mapped':!field.mapped}"><i class="fa fa-arrows"></i></td>
+      </tr>
+    </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-md-9">
+    <table class="table table-fixed">
+      <thead>
+        <tr>
+          <th class="text-muted">
+            {{  numberMandatory(tFields) }} Mandatory Fileds Missing
+          </th>
+          <th>
+            Target Fields
+            <br><br>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let field of tFields ;let i = index">
+          <td (drop)="drop($event,i)" (dragover)="allowDrop($event,i)">
+            <div *ngIf="field.source.length>=0">
+              <div class="bubble" *ngFor="let b of field.source">
+                  <a href="#" (click)="deleteAvailable($event,b,i)" >
+                      <i class="fa fa-remove" style="color:rgb(187, 115, 115);"></i>
+                    </a>
+                    {{aFields[b].name}}
+              </div>
+            </div>
+          </td>
+          <td>{{field.target}} </td>
+        </tr>
+    </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-12">
+    <div *ngIf="!busy" class="nav-btn text-center">
+        <a  routerLink="/home"><i class="fa fa-arrow-left"></i> <b>Previous</b> </a>
+        <a  href="#" (click)="sendMap($event)"><b>Next </b> <i class="fa fa-arrow-right"></i></a>
+    </div>
+    <div *ngIf="busy" class="nav-btn text-center"  style="color:grey">
+        <h3><i class="fa fa-spinner fa-spin"></i></h3>
+      <p>Processing your data. This might take a while.</p>
+  </div>
+  </div>
+
+</div>

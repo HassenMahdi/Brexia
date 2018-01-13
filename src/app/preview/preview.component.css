@@ -1,0 +1,23 @@
+.page-list{
+    text-align: left;
+    color: lightgrey;
+}
+
+.page-selector{
+    width: auto;
+    float: left;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 50px;
+    border-radius: 0 0 10px 10px;
+    background-color: #f1f1f1;
+}
+
+.page-selector.selected{
+    float: left;
+    border-color: grey;
+    box-shadow: 0px 2px 1px 0px lightgrey;
+    color: grey;
+    background-color: white;   
+}

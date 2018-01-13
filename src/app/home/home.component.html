@@ -1,0 +1,40 @@
+<br>
+<div class="row">
+  <div class="col-md-12">
+      <div class="upload">
+        <h4 class="text-muted">Please select a file to upload</h4>
+        <input #fileInput class="inputfile" type="file" name="file" id="file" accept=".xlsx,.xls"  (change)="fileChanged($event)">
+        <label for="file"><i class="fa fa-upload fa-4x"></i></label>
+        <!--ERROR-->
+        <div *ngIf="errMsg">
+            <div class="alertmessage">
+              <h3><b>{{errMsg}} </b> </h3>
+              <i class="fa fa-exclamation fa-3x" aria-hidden="true"></i>
+            </div>
+        </div>
+        <!--ERROR-->
+        <!--SUCCESS-->
+        <div *ngIf="succMsg">
+          <div class="successmessage">
+            <!-- 
+              <h3><b>{{succMsg}}</b> </h3> 
+            -->
+            <i class="fa fa-check fa-3x" aria-hidden="true"></i>
+          </div>
+          <br>
+          <app-preview [data]="data" ></app-preview>
+          
+        </div>
+
+        <div *ngIf="busyMsg">
+            <div class="busymessage">
+              <p>{{busyMsg}}</p>
+              <h3><i class="fa fa-spinner fa-spin" aria-hidden="true"></i></h3>
+              
+            </div>
+        </div>
+
+        <!--SUCCESS-->
+      </div>
+  </div>
+</div>

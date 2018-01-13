@@ -1,0 +1,21 @@
+<div class="row">
+
+<div class="col-md-12">
+  <angular-slickgrid gridId="grid1"
+            [columnDefinitions]="columnDefinitions"
+            (dataviewChanged)="dataviewReady($event)" 
+            (gridChanged)="gridReady($event)"
+            [gridOptions]="gridOptions"
+            [dataset]="dataset">
+  </angular-slickgrid>
+</div>
+
+<div class="col-md-12">
+    <div class="nav-btn text-center">
+        <a  routerLink="/map"><i class="fa fa-arrow-left"></i> <b>Previous</b> </a>
+        <a  routerLink="/main"><b>Export </b> <i class="fa fa-download"></i></a>
+    </div>
+  </div>
+
+</div>
+

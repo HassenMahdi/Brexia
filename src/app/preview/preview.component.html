@@ -1,0 +1,27 @@
+<div *ngIf="show" class="row">
+  
+  <div class="col-md-12">
+    <angular-slickgrid gridId="grid2"
+              (dataviewChanged)="dataviewReady($event)" 
+              [columnDefinitions]="columnDefinitions"
+              [gridOptions]="gridOptions"
+              [dataset]="dataset">
+    </angular-slickgrid>
+  </div>
+
+  <div class="col-md-12">
+    <div class="page-list" *ngFor="let p of pages; let i = index">
+      <div (click)="openPage(i)"  class="page-selector" [ngClass]="{'selected':i==pageNumber}">
+        {{p.numero}} : {{p.name}} 
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="nav-btn">
+      <a  style="margin-top:50px" href="#" (click)="goToMap($event)"><b>Go to mapping </b> <i class="fa fa-arrow-right"></i></a>
+  </div>
+
+
+</div>
+  
